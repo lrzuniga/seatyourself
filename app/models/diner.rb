@@ -1,5 +1,9 @@
 class Diner < ActiveRecord::Base
 	has_secure_password
+
+	has_many :reservations
+	has_many :restaurants, :through => :reservations
+
 	validates :password, :presence => true, :on => :create
 
 	validates :email, 
