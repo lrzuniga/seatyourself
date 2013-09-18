@@ -1,15 +1,15 @@
 class DinersController < ApplicationController
 
 	def show
-		@diner = diner.find(params[:id])
+		@diner = Diner.find(params[:id])
 	end
 
 	def new
-		@diner = diner.new
+		@diner = Diner.new
 	end
 
 	def create
-		@diner = diner.new(diner_params)
+		@diner = Diner.new(diner_params)
 
 		if @diner.save
 			redirect_to diner_path(@diner.id)
@@ -19,7 +19,7 @@ class DinersController < ApplicationController
 	end
 
 	def diner_params
-		params.require(:diner).permit(:name, :email, :password_digest)
+		params.require(:diner).permit(:name, :email, :password, :password_confirmation)
 	end
 
 end
