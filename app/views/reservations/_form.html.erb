@@ -1,0 +1,13 @@
+<h5> New Reservation </h5>
+
+<%= form_for ([@restaurant, @reservation]) do |f| %>
+
+<%= f.label :party_size %>
+<%= f.number_field :party_size %>
+
+<%= f.label :time %>
+<%= f.datetime_field :time %>
+
+<%= f.submit %>
+
+<% end %>

@@ -3,7 +3,9 @@ Seatyourself::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
 
-  resources :restaurants
+  resources :restaurants do
+    resources :reservations, :only => [:new, :create, :show, :destroy]
+  end  
   resources :diners, :only => [:new, :create, :show]
   resources :sessions, :only => [:new, :create, :destroy]
   root 'restaurants#index'
