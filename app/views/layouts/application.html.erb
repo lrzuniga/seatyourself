@@ -15,5 +15,16 @@
 
 <%= yield %>
 
+
+
+<p>
+  <% if current_diner %>
+    Signed in as <%= link_to current_diner.name, diner_path(current_diner.id) %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+  <% else %>
+  	 <%= link_to "Log In", new_session_path %> or <%= link_to "Sign Up!", new_diner_path %> 
+  <% end %>
+
+ </p>
+
 </body>
 </html>

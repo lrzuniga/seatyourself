@@ -5,7 +5,7 @@ Seatyourself::Application.routes.draw do
 
   resources :restaurants
   resources :diners, :only => [:new, :create, :show]
-
+  resources :sessions, :only => [:new, :create, :destroy]
   root 'restaurants#index'
 
   # You can have the root of your site routed with "root"
