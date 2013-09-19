@@ -1,6 +1,15 @@
 
 
 	<h3> <%= @diner.name %> </h3>
-	<ul>
-		<li> Address: <%= @diner.email %> </li>
-	</ul>
+	<h4> Address: <%= @diner.email %> </h4>
+	<br>
+	<br>
+	<ul> 
+	<% @reservations.each do |reservation| %>
+	
+		<li>Reservation for <%= reservation.party_size %> at <%= reservation.restaurant.name %> for <%= reservation.time.strftime("%b %e, %l:%M %p") %> </li>
+		 
+
+
+	<% end %>
+		</ul>

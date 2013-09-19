@@ -2,6 +2,7 @@ class DinersController < ApplicationController
 
 	def show
 		@diner = Diner.find(params[:id])
+		@reservations = @diner.reservations.all
 	end
 
 	def new
