@@ -1,13 +1,26 @@
-<h5> New Reservation </h5>
+<form>
+	<fieldset>
+		<legend>New Reservation</legend>
 
-<%= form_for ([@restaurant, @reservation]) do |f| %>
+		<%= form_for ([@restaurant, @reservation]) do |f| %>
+		<div class="row">
+			<div class="large-4 columns">
+				<%= f.label :party_size %>
+				<%= f.number_field :party_size %>
+			</div>
+		</div>
 
-<%= f.label :party_size %>
-<%= f.number_field :party_size %>
+		<div class="row">
+			<div class="small-3 columns">
+				<%= f.label :time %>
+				<%= f.select :time, @restaurant.timeslots.collect { |slot| [slot.strftime("%A, %b %d, %l:%M %p"), slot.utc]} %>
+			</div>
+		</div>
 
-<%= f.label :time %>
-<%= f.select :time, @restaurant.timeslots.collect { |slot| [slot.strftime("%A, %b %d, %l:%M %p"), slot.utc]} %>
 
-<%= f.submit %>
+		<%= f.submit %>
 
-<% end %>
+
+		<% end %>
+	</fieldset>
+</form>
