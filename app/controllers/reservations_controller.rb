@@ -11,7 +11,6 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.build(reservation_params)
 		@reservation.diner_id = current_diner.id
 
-	
 		if @reservation.save
 			redirect_to restaurant_path(@reservation.restaurant_id)
 		else

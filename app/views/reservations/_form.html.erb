@@ -1,8 +1,9 @@
-<form>
-	<fieldset>
-		<legend>New Reservation</legend>
+
 
 		<%= form_for ([@restaurant, @reservation]) do |f| %>
+
+			<fieldset>
+		<legend>New Reservation</legend>
 		<div class="row">
 			<div class="large-4 columns">
 				<%= f.label :party_size %>
@@ -13,14 +14,13 @@
 		<div class="row">
 			<div class="small-3 columns">
 				<%= f.label :time %>
-				<%= f.select :time, @restaurant.timeslots.collect { |slot| [slot.strftime("%A, %b %d, %l:%M %p"), slot.utc]} %>
+				<%= f.select :time, @restaurant.timeslots.collect { |slot| [slot.strftime("%A, %b %d, %l:%M %p"), slot.utc]}%>
 			</div>
 		</div>
 
-
 		<%= f.submit %>
-
+			</fieldset>
 
 		<% end %>
-	</fieldset>
-</form>
+
+
