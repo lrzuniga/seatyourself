@@ -9,6 +9,8 @@ class RestaurantsController < ApplicationController
 
 		if current_diner
       @reservation = @restaurant.reservations.build
+    else
+    	redirect_to new_session_path 
     end
 	end
 

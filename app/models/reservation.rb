@@ -3,7 +3,7 @@ class Reservation < ActiveRecord::Base
 	belongs_to :diner
 
 	validates :party_size,
-		:numericality => { :only_integer => true, :greater_than => 0 }
+		:numericality => { :only_integer => true, :greater_than => 1 }
 
 
 
@@ -12,12 +12,13 @@ class Reservation < ActiveRecord::Base
 	# end
 		
 
-	# before_save(:on => :create) do
-	# 	if self.restaurant.party_sizes > 0
-	# 		self.restaurant.seats -= self.restaurant.party_sizes
-	# 	end		
+	after_save(:on => :create) do
+		 if self.time < (Time.now + 2.hours)
+			self.restaurant.seats -= self.party_size
+			self.restaurant.save!
+		 end		
 
-	# end
+	 end
 
 
 
