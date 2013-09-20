@@ -8,10 +8,12 @@ class Reservation < ActiveRecord::Base
 	def time_verifier
 		if self.time.hour	> self.restaurant.close_hour || self.time.hour < self.restaurant.open_hour
 			@horseshit = 1
-			
 		end	
 	end	
 
+	def end_time
+		self.time + 2.hours
+	end
 		
 
 	before_save(:on => :create) do

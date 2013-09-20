@@ -5,7 +5,7 @@ class Restaurant < ActiveRecord::Base
 
 	validates :name, :address, :presence => true
 	validates :seats,
-		:numericality => { :only_integer => true, :greater_than => 0 }
+		:numericality => { :only_integer => true }
 	validates :close_hour,
 		:numericality => { :only_integer => true, :greater_than => :open_hour }	
 
@@ -33,5 +33,10 @@ class Restaurant < ActiveRecord::Base
 		end while a_time < Time.zone.now + 3.days
 		timeslots
 	end	
+
+	def party_sizes
+		self.reservations.where("time < ?", [2.hours.from_now]).collect {|rez| rez.party_size }.inject(&:+)
+	end
+
 
 end
