@@ -1,36 +1,87 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Seatyourself</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
+ <html>
+   <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+   <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->  
+   <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+   <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+   <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+
+   <title>Seatyourself</title>
+     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+     <%= csrf_meta_tags %>
+ 
+
+ 
+   <head>
+         <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+         <%= stylesheet_link_tag    "application" %>
+         <%= javascript_include_tag "vendor/custom.modernizr" %>
+         <%= csrf_meta_tags %>
+  </head>  
+
+<nav class="top-bar hide-for-small" data-options="is_hover:false">
+    <ul class="title-area">
+        <li class="name">
+             <h1><a href="#"><%= link_to "SEAT YOURSELF", root_path %></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
+        </li>
+    </ul>
+
+    <section class="top-bar-section">
+
+      <ul class="left">
+        <li class="divider"></li>
+        <li class><%= link_to "New Restaurant", new_restaurant_path %> </li>
+        <li class="divider"></li>
+        <li class=><%= link_to "New Diner", new_diner_path %> </li>
+        <li class="divider"></li>
+      </ul>
+
+      <ul class="right">
+        <% if current_diner %>
+          <li class="divider"></li>
+          <li class="has-dropdown"> <a href="#"><%= current_diner.name %></a>
+            <ul class="dropdown">
+              <li><%= link_to "Profile", diner_path(current_diner.id) %></li>
+              <li><%= link_to "Log out", session_path("current"), :method => :delete %></li>
+            </ul>
+          </li>
+          
+        <% else %>
+           <li class="divider"></li>
+           <li class=><%= link_to "Log In", new_session_path %></li>
+           <li class="divider"></li>
+           <li class=><%= link_to "Sign Up!", new_diner_path %></li>
+       <% end %>
+      </ul>
+    </section> 
+</nav>
+      
+ 
+   
+
 <body>
-  <% if flash[:notice] %>
+
+<% if flash[:notice] %>
     <p id='notice'><%= flash[:notice] %></p>
   <%end%>
   <% if flash[:alert] %>
     <p id='alert'><%= flash[:alert] %></p>
   <%end%> 
-
-	<h2><%= link_to "SEAT YOURSELF", root_path %> </h2>
-	<p> <%= link_to "New Restaurant", new_restaurant_path %> ||
-	<%= link_to "New Diner", new_diner_path %> </p>
-
-
-<%= yield %>
+  
+   <p>
+      <%= yield %>
+      
+    </p>
 
 
+     <%= javascript_include_tag "application" %>
 
-<p>
-  <% if current_diner %>
-    Signed in as <%= link_to current_diner.name, diner_path(current_diner.id) %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-  <% else %>
-  	 <%= link_to "Log In", new_session_path %> or <%= link_to "Sign Up!", new_diner_path %> 
-  <% end %>
-
- </p>
-
-</body>
+ </body>
 </html>
