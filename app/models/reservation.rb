@@ -7,8 +7,8 @@ class Reservation < ActiveRecord::Base
 
 	def time_verifier
 		if self.time.hour	> self.restaurant.close_hour || self.time.hour < self.restaurant.open_hour
-			raise "It's not open!!!"
-			redirect_to restaurants_path
+			@horseshit = 1
+			
 		end	
 	end	
 
