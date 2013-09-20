@@ -6,8 +6,8 @@
 <%= f.number_field :party_size %>
 
 <%= f.label :time %>
-<%= f.date_select :time %>
-<%= f.select :time, @reservation.foo(@restaurant.open_hour) %> 
+<%= f.datetime_select :time, :discard_year => true %>
+
 
 <%= f.submit %>
 

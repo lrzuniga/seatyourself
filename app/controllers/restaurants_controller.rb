@@ -14,6 +14,13 @@ class RestaurantsController < ApplicationController
 
 	def new
 		@restaurant = Restaurant.new
+		@times = []
+		zippo = 11
+			until zippo == 20
+				@times << zippo
+				zippo += 1
+			end
+		@times		
 	end
 
 	def create
@@ -31,7 +38,8 @@ class RestaurantsController < ApplicationController
 	end
 
 	def update
-		@restaurant = Restaurant.update_attributes(restaurant_params)
+		@restaurant = Restaurant.find(params[:id])
+		@restaurant.update_attributes(restaurant_params)
 
 		if @restaurant.save
 			redirect_to restaurants_path
@@ -47,6 +55,6 @@ class RestaurantsController < ApplicationController
 	end
 
 	def restaurant_params
-		params.require(:restaurant).permit(:name, :address, :description, :seats)
+		params.require(:restaurant).permit(:name, :address, :description, :seats, :open_hour, :close_hour)
 	end
 end
