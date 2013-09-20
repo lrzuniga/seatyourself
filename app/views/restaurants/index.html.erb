@@ -1,11 +1,29 @@
+<div class="row">
+	<div class="large-12 columns">
+		<!-- Desktop Slider -->
+		<div class="hide-for-small">
+			<div class="orbit-container">
+				<ul id="featured1" data-orbit data-options="pause_on_hover:false; timer_speed:5000;" class="orbit-slides-container" style="height:373px;">
+					<li class="active" style="z-index: 4; margin: 0%;">
+	              		<img src="http://f.cl.ly/items/15323O2S44113i2j063t/bruschetta-italy-halloween-food.jpg">
+		              		<div class="orbit-caption">
+		                		Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+		              		</div>
+            		</li>
+			</div>
+		</div>
 
-<% @restaurants.each do |restaurant| %>
 
-	<h3> <%= link_to restaurant.name, restaurant_path(restaurant.id) %> </h3>
-	<ul>
-		<li> Address: <%= restaurant.address %> </li>
-		<li> <%= restaurant.description %> </li>
-		<li> Available Seats: <%= restaurant.seats %> </li>
-	</ul>
-	
-	<% end %>	
+
+		<% @restaurants.each do |restaurant| %>
+
+			<h3> <%= link_to restaurant.name, restaurant_path(restaurant.id) %> </h3>
+			<ul>
+				<li> Address: <%= restaurant.address %> </li>
+				<li> <%= restaurant.description %> </li>
+				<li> Available Seats: <%= restaurant.seats %> </li>
+			</ul>
+			
+		<% end %>	
+	</div>
+</div>

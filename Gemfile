@@ -46,6 +46,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'zurb-foundation', '~> 4.0.0'
+gem 'compass-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
