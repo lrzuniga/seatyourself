@@ -43,7 +43,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'compass-rails'
+
 
 gem 'zurb-foundation', '~> 4.0.0'
 
