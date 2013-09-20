@@ -14,13 +14,6 @@ class RestaurantsController < ApplicationController
 
 	def new
 		@restaurant = Restaurant.new
-		@times = []
-		zippo = 11
-			until zippo == 20
-				@times << zippo
-				zippo += 1
-			end
-		@times		
 	end
 
 	def create

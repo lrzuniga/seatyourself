@@ -11,8 +11,8 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.build(reservation_params)
 		@reservation.diner_id = current_diner.id
 
-		if @horseshit != 1 
-			@reservation.save
+	
+		if @reservation.save
 			redirect_to restaurant_path(@reservation.restaurant_id)
 		else
 			render :new, :alert => "THEY AREN'T OPEN THEN DUDE, TRY AGAIN"

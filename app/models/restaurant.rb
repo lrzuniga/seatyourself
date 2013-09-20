@@ -35,7 +35,7 @@ class Restaurant < ActiveRecord::Base
 	end	
 
 	def party_sizes
-		self.reservations.where("time < ?", [2.hours.from_now]).collect {|rez| rez.party_size }.inject(&:+)
+		self.reservations.where("time < ?", [2.hours.from_now]).collect {|rez| rez.party_size }.inject(&:+).to_i
 	end
 
 
