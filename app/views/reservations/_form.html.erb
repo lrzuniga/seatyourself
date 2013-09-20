@@ -6,8 +6,7 @@
 <%= f.number_field :party_size %>
 
 <%= f.label :time %>
-<%= f.datetime_select :time, :discard_year => true %>
-
+<%= f.select :time, @restaurant.timeslots.collect { |slot| [slot.strftime("%A, %b %d, %l:%M %p"), slot]} %>
 
 <%= f.submit %>
 
