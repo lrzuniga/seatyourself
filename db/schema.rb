@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920141831) do
+ActiveRecord::Schema.define(version: 20130920233626) do
 
   create_table "diners", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130920141831) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "loyalty_points"
   end
 
   create_table "reservations", force: true do |t|
