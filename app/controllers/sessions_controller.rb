@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
 			session[:diner_id] = diner.id
 			redirect_to restaurants_path, :notice => "Logged In!"
 		else
+			flash.now[:alert] = "Invalid email or password"
 			render :new
 		end		
 	end
