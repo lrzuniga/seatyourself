@@ -9,4 +9,5 @@ class Restaurant < ActiveRecord::Base
 	validates :close_hour,
 		:numericality => { :only_integer => true, :greater_than => :open_hour }	
 
+
 end
