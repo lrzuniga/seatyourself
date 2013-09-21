@@ -17,7 +17,9 @@ class Reservation < ActiveRecord::Base
 			self.restaurant.seats -= self.party_size
 			self.restaurant.save!
 		 end		
-
+		 
+		 self.diner.loyalty_points += 1
+		 self.diner.save! 
 	 end
 
 
