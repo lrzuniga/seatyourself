@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
 		@reservation.diner_id = current_diner.id
 
 		if @reservation.save
+			DinerMailer.reservation_confirmation(@reservation.diner, @reservation).deliver
 			redirect_to restaurant_path(@reservation.restaurant_id)
 		else
 			render :new, :alert => "THEY AREN'T OPEN THEN DUDE, TRY AGAIN"

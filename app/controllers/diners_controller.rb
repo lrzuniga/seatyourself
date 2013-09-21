@@ -15,6 +15,7 @@ class DinersController < ApplicationController
 
 		if @diner.save
 			redirect_to diner_path(@diner.id)
+
 		else
 			render :new
 		end		
