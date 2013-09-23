@@ -1,3 +1,13 @@
+
+
+
+<div class="row">
+	<div class="12 columns">
+		<h2>Find Great Food.</h2>
+		<h4 class ="subheader">Seat Yourself finds restaurants that can take your reservation quickly and easily.</h4>
+
+	</div>
+</div>
 <div class="row">
 	<div class="large-12 columns">
 		<!-- Desktop Slider -->
@@ -5,7 +15,7 @@
 		  <ul data-orbit class="orbit-slides-container">
 		    <li>
 		      <img src="http://f.cl.ly/items/15323O2S44113i2j063t/bruschetta-italy-halloween-food.jpg">
-		      <div class="orbit-caption">Italian Food</div>
+		      <div class="orbit-caption"><%= link_to "Italian Food", "/restaurants/2" %></div>
 		    </li>
 		    <li class="active">
 		      <img src="http://f.cl.ly/items/0p3C1x0K1L1E001m1D25/chinese.jpg">
@@ -13,7 +23,7 @@
 		    </li>
 		    <li>
 		      <img src="http://f.cl.ly/items/1e0V2r1P3I2l3y2O2c3Q/american.jpg">
-		      <div class="orbit-caption">Gourmet Burgers</div>
+		      <div class="orbit-caption"><%= link_to "Gourmet Burgers", "/restaurants/1" %></div>
 		    </li>
 		    <li>
 		      <img src="http://f.cl.ly/items/1D1b3N0y07440N360A15/greek.jpg">
@@ -25,19 +35,26 @@
 		    </li>
 		  </ul>
 		</div>	
-
-
-
-		<% @restaurants.each do |restaurant| %>
-
-			<h3> <%= link_to restaurant.name, restaurant_path(restaurant.id) %> </h3>
-			<ul>
-				<li> Address: <%= restaurant.address %> </li>
-				<li> <%= restaurant.description %> </li>
-				<li> Available Seats: <%= restaurant.seats %> </li>
-			</ul>
-			
-		<% end %>	
 	</div>
 </div>
+
+
+<div class="row">
+	<% @restaurants.each do |restaurant| %>
+		<div class="small-4 large-4 columns">
+			<h2> <small><%= link_to restaurant.name, restaurant_path(restaurant.id) %></small> </h3>
+			
+				<p>Address: <%= restaurant.address %></p>
+				<p>Category:<%= restaurant.description %> </p>
+				<p> Available Seats: <%= restaurant.seats %> </p>
+		</div>
+	<% end %>	
+
+</div>
+
+
+
+
+
+	
 
